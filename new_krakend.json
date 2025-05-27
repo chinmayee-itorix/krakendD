@@ -64,6 +64,50 @@
     "method" : "GET",
     "output_encoding" : "json",
     "timeout" : "2s"
+  }, {
+    "backend" : [ {
+      "allow" : [ ],
+      "deny" : [ ],
+      "backendEncoding" : "json",
+      "group" : "",
+      "host" : [ "https://qa-dev-ieia.apiwiz.io" ],
+      "mapping" : {
+        "" : ""
+      },
+      "method" : "POST",
+      "sd" : "static",
+      "target" : "",
+      "disable_host_sanitize" : true,
+      "extra_config" : {
+        "async/amqp" : {
+          "durable" : true,
+          "prefetch_count" : 10,
+          "name" : "krakend",
+          "host" : "amqp://guest:guest@localhost:5672/",
+          "exclusive" : { },
+          "exchange" : "foo",
+          "no_local" : true,
+          "no_wait" : true,
+          "prefetch_size" : 0,
+          "delete" : { },
+          "auto_ack" : { }
+        }
+      },
+      "input_headers" : [ ],
+      "input_query_strings" : [ ],
+      "is_collection" : false,
+      "sd_scheme" : "http",
+      "url_pattern" : "/apis/users/insights"
+    } ],
+    "cache_ttl" : "ms",
+    "concurrent_calls" : 1,
+    "endpoint" : "/private",
+    "extra_config" : { },
+    "input_headers" : [ ],
+    "input_query_strings" : [ ],
+    "method" : "POST",
+    "output_encoding" : "json",
+    "timeout" : "2s"
   } ],
   "host" : [ "https://qa-dev-ieia.apiwiz.io" ],
   "listen_ip" : "0.0.0.0",
