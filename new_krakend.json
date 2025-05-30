@@ -132,6 +132,49 @@
     "method" : "GET",
     "output_encoding" : "json",
     "timeout" : "2s"
+  }, {
+    "backend" : [ {
+      "allow" : [ ],
+      "deny" : [ ],
+      "backendEncoding" : "json",
+      "group" : "",
+      "host" : [ "https://qa-dev-ieia.apiwiz.io" ],
+      "mapping" : {
+        "" : ""
+      },
+      "method" : "GET",
+      "sd" : "static",
+      "target" : "",
+      "disable_host_sanitize" : true,
+      "extra_config" : { },
+      "input_headers" : [ ],
+      "input_query_strings" : [ ],
+      "is_collection" : false,
+      "sd_scheme" : "http",
+      "url_pattern" : "/education"
+    } ],
+    "cache_ttl" : "0ms",
+    "concurrent_calls" : 1,
+    "endpoint" : "/education-clean",
+    "extra_config" : {
+      "proxy" : {
+        "flatmap_filter" : [ {
+          "type" : "del",
+          "args" : [ "kindergarten.0", "" ]
+        }, {
+          "type" : "move",
+          "args" : [ "schools.*.title", "schools.*.name", "" ]
+        }, {
+          "type" : "append",
+          "args" : [ "kindergarten", "schools", "" ]
+        } ]
+      }
+    },
+    "input_headers" : [ ],
+    "input_query_strings" : [ ],
+    "method" : "GET",
+    "output_encoding" : "json",
+    "timeout" : "2s"
   } ],
   "host" : [ "https://qa-dev-ieia.apiwiz.io" ],
   "listen_ip" : "0.0.0.0",
